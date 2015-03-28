@@ -37,5 +37,8 @@
  * Underscore
  * bootstrap CSS + fonts
  * Starter page supporting Login/Logout and User Registration
+* Gradle based Build system for the Backend
+* Gulp based Build system for the UI 
+* Completely seperate UI and Backend development if you choose. 
 
 
