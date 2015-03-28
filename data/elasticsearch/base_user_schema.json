@@ -1,0 +1,56 @@
+{
+  "user": {
+    "_meta": {
+      "schemaVersion": "1.0.0"
+    },
+    "dynamic": "strict",
+    "include_in_all": false,
+    "properties": {
+      "roles" : {
+        "type" : "string",
+        "index": "not_analyzed"
+      },
+      "createdDate" : {
+        "type": "long",
+        "index": "not_analyzed"
+      },
+      "lastModifiedDate" : {
+        "type": "long",
+        "index": "not_analyzed"
+      },
+      "status": {
+        "type": "string",
+        "index": "not_analyzed"
+      },
+      "email": {
+        "type": "string",
+        "index": "not_analyzed"
+      },
+      "password": {
+        "type": "string",
+        "index": "not_analyzed"
+      },
+      "namePrefix": {
+        "type": "string",
+        "index": "not_analyzed"
+      },
+      "firstName": {
+        "type": "string",
+        "index" : "not_analyzed"
+      },
+      "middleName": {
+        "type": "string",
+        "index" : "not_analyzed"
+      },
+      "lastName": {
+        "type": "string",
+        "index" : "not_analyzed"
+      },
+      "nameSuffix": {
+        "type": "string",
+        "index": "not_analyzed"
+      }
+
+    }
+  }
+}

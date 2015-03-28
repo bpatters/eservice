@@ -1,0 +1,50 @@
+{
+  "name": "server-flux",
+  "version": "0.0.1",
+  "description": "Base Secure Server utilizing Elasticsearch as it's datastore",
+  "main": "js/app.js",
+  "dependencies": {
+    "bootstrap": "latest",
+    "flux": "latest",
+    "keymirror": "latest",
+    "moment": "^2.9.0",
+    "promise": "latest",
+    "react": "latest",
+    "react-bootstrap": "latest",
+    "react-tools": "latest",
+    "rest": "latest",
+    "underscore": "latest",
+    "when": "latest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-plugin-react": "latest",
+    "browserify": "latest",
+    "envify": "latest",
+    "gulp-foreach": "latest",
+    "gulp": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "gulp-size": "latest",
+    "gulp-concat": "latest",
+    "gulp-clean": "latest",
+    "gulp-jest": "latest",
+    "jest-cli": "latest",
+    "mold-source-map": "latest",
+    "parallelshell": "latest",
+    "reactify": "latest",
+    "run-sequence": "latest",
+    "underscore": "latest",
+    "vinyl-buffer": "latest",
+    "vinyl-source-stream": "latest",
+    "watch": "latest",
+    "watchify": "latest"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  }
+}

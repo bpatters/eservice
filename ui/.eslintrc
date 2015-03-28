@@ -1,0 +1,43 @@
+{
+  "parser": "babel-eslint",
+  "settings": {
+    "ecmascript": 6
+  },
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "defaultParams": true,
+    "forOf": true,
+    "generators": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true,
+    "globalReturn": true,
+    "jsx": true
+  },
+  "env": {
+    "mocha": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "strict": 1,
+    "no-empty": 0,
+    "indent": [2, 2],
+    "quotes": [1, "single"],
+    "no-multi-spaces": 1,
+    "key-spacing": [0, {"align": "value"}],
+    "no-underscore-dangle": 0
+  }
+}

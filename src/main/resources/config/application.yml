@@ -1,0 +1,30 @@
+spring:
+  profiles.active: dev
+
+---
+logging:
+    level:
+        org:
+            springframework:
+                security: INFO
+                web: INFO
+management:
+    security:
+        sessions: always
+security:
+    sessions: always
+spring:
+    profiles: dev
+
+elastic:
+    cluster:
+        name: "es-dev"
+    hosts: "elastic.dev:9300"
+    node:
+        local: false
+
+---
+spring:
+    profiles: prod
+security:
+    sessions:always

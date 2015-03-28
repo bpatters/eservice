@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+ext {
+    junitVersion = '4.11'
+    springBootVersion = '1.1.10.RELEASE'
+    elasticSearchVersion = '1.4.2'
+    guavaVersion = '14.0.1'
+    snakeYamlVersion = '1.14'
+    thymeleafSecurityVersion = '2.1.1.RELEASE'
+    springBootVersion = "1.2.1.RELEASE"
+    jodaTimeVersion = "2.7"
+    jodaModuleVersion = "2.5.1"
+    guavaModuleVersion = "2.5.1"
+    jdk8DataBindVersion = "2.5.1";
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    testCompile "junit:junit:${junitVersion}"
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}")
+    compile "com.google.guava:guava:${guavaVersion}"
+    compile "org.elasticsearch:elasticsearch:${elasticSearchVersion}"
+    compile "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.yaml:snakeyaml:${snakeYamlVersion}")
+    compile("joda-time:joda-time:${jodaTimeVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-joda:${jodaModuleVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-guava:${guavaModuleVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jdk8DataBindVersion}")
+}
+
+jar {
+    baseName = "base-web"
+    version = '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '2.2.1'
+}
+
+springBoot {
+    mainClass = 'com.myl.eservice.web.WebApplication'
+}
+
+task runCli(dependsOn: "compileJava") << {
+    updateJVMArgs(tasks.bootRun)
+    tasks.bootRun.main = 'com.myl.eservice.cli.BaseCLI'
+    tasks.bootRun.execute()
+}
+
+
+tasks.withType(JavaExec) { task ->
+    updateJVMArgs(task);
+}
+
+def updateJVMArgs(target) {
+    if (project.hasProperty("args")) {
+        target.args = (project.properties.args.split(" ") as List);
+    }
+    if (System.getProperty("debug") != null) {
+    } else {
+        target.jvmArgs = (java_debug_opts.split(/\s+/) as List)
+    }
+    if (System.getProperty("spring.profiles.active") != null) {
+        target.jvmArgs += "-Dspring.profiles.active="+ System.getProperty("spring.profiles.active")
+    }
+}

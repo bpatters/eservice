@@ -1,0 +1,26 @@
+server {
+  listen   80;
+  server_name  dev-app;
+
+  access_log  /var/log/nginx/localhost.access.log;
+
+  location ^~ /css/ {
+    root   /opt/www/;
+  }
+  location ^~ /js/ {
+    root   /opt/www/;
+  }
+  location ^~ /images/ {
+    root   /opt/www/;
+  }
+
+  location /ws {
+        proxy_pass http://192.168.77.1:8080;
+        expires -1;
+  }
+
+  location / {
+    root /opt/www/;
+    index  index.html index.htm;
+  }
+}
